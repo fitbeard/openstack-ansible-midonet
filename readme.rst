@@ -1,10 +1,11 @@
 Midonet for OpenStack-Ansible
 #########################################
-:date: 2017-01-25
+:date: 2017-04-25
 :tags: openstack, ansible
 :category: \*openstack, \*nix
 :OS: Ubuntu 16.04
-:Midonet: 5.2.1
+:OpenStack release: Newton,Ocata
+:Midonet: 5.2.1-5.4.1
 
 
 About this repository
