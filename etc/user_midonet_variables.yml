@@ -1,16 +1,16 @@
 ---
 
-openstack_branch: 'stable/newton'
-midonet_service_password: labas
+openstack_branch: 'stable/ocata'
 midonet_service_username: midonet
+midonet_service_password: password
 
 # Git branches for python egg building for midonet-networking and python-midonetclient
-midonet_networking_branch: 'stable/newton'
-midonet_branch: 'stable/v5.2.1'
+midonet_networking_branch: 'stable/ocata'
+midonet_branch: 'stable/v5.4.1'
 
 # For ansible-cassandra role
-cassandra_max_heap_size: '1024M'
-cassandra_heap_newsize: '100M'
+cassandra_max_heap_size: '2048M'
+cassandra_heap_newsize: '1024M'
 cassandra_listen_address: '{{ ansible_host }}'
 cassandra_rpc_address: '{{ ansible_host }}'
 
@@ -34,13 +34,13 @@ midonet_cluster_cluster_mem: False
 midonet_cluster_flow_tracing_enabled: True
 midonet_cluster_flow_tracing_service_ws_port: '8460'
 midonet_cluster_flow_tracing_auth_ssl_enabled: True
-midonet_cluster_max_heap_size: '1024M'
-midonet_cluster_heap_newsize: '100M'
+midonet_cluster_max_heap_size: '2048M'
+midonet_cluster_heap_newsize: '1024M'
 
 # For ansible-midonet-agent role
 midonet_agent_cluster_hostname: '{{ internal_lb_vip_address }}'
-#midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
-midonet_agent_tunnel_ip: '{{ ansible_br_mgmt.ipv4.address }}'
+midonet_agent_tunnel_ip: '{{ ansible_br_vxlan.ipv4.address }}'
+#midonet_agent_tunnel_ip: '{{ ansible_br_mgmt.ipv4.address }}'
 midonet_agent_tzone_type: 'vxlan'
 midonet_agent_tzone_name: 'tz'
 midonet_agent_cluster_username: '{{ midonet_service_username }}'
@@ -62,17 +62,19 @@ zk_iface: 'ansible_eth1'
 cs_iface: 'ansible_eth1'
 
 # For ansible-midonet-repo role
-midonet_repo_midonet_version: '5.2'
+midonet_repo_midonet_version: '5.4'
 midonet_repo_midonet_release: 'stable'
-midonet_repo_openstack_plugin_version: 'newton'
+midonet_repo_openstack_plugin_version: 'ocata'
 midonet_repo_openstack_plugin_release: 'stable'
 midonet_repo_mem_enabled: False
 midonet_repo_mem_username: 'midonet'
 midonet_repo_mem_password: '*******'
 
 neutron_plugin_base:
-  - midonet.neutron.services.l3.l3_midonet.MidonetL3ServicePlugin
+#  - midonet.neutron.services.l3.l3_midonet.MidonetL3ServicePlugin
+  - midonet_l3
   - vpnaas
+  - qos
 
 horizon_enable_neutron_vpnaas: True
 
